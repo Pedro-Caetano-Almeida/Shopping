@@ -7,4 +7,4 @@ def index(request):
 def produto_lista(request):
     return render(request,'produtos.html')
 def produto_detalhe(request):
-    return render(request,'prduto_detalhes.html')
+    return render(request,'produto_detalhes.html')
