@@ -7,5 +7,8 @@ urlpatterns = [
     path('produto', views.produto_detalhe, name='produto_detalhe'),
     path('sobre-a-empresa', views.institucional, name='institucional'),
     path('contatos', views.contatos, name='fale_conosco'),
-    path('cadastro', views.cadastro, name='cadastros')
+    path('cadastro', views.cadastro, name='cadastros'),
+    path('produtos/<int:id>', views.produto_lista_por_id, name= 'produto_lista_por_id'),
+    path('produto/<int:id>', views.produto_detalhe, name='produto_detalhe'), #aqui usamos o mesmo do produto pq o produto sempre vai precisar de id
+
 ]
