@@ -16,7 +16,10 @@
                 <div class="d-flex justify-content-center small text-warning mb-2">
                     {% for i in prod.get_estrelas %}
                         <div class="bi-star-fill"></div>
-                    `{% endfor %}`
+                    `{% endfor %}
+                    {% for i in prod.get_estrelas_vazias %}
+                        <div class="bi-star"></div>
+                    `{% endfor %}
                 </div>
                 <!-- Product price-->
                 R$ {{ prod.preco}}

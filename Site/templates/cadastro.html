@@ -11,5 +11,17 @@
                 </div>
             </div>
         </header>
+        <section class="py-5">
+            <div class="container">
+                <form action="." method="POST">
+                    {% csrf_token %}
+                    <table class="table">
+                        {{ form_cliente.as_table }}
+                    </table>
+
+                    <input type="submit" value="Enviar">
+                </form>
+            </div>
+        </section>    
 
 {% endblock Conteudo %}

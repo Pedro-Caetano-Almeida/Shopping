@@ -32,6 +32,9 @@ class Produto(models.Model):
     
     def get_estrelas(self):
         return range(self.avaliacao)
+    
+    def get_estrelas_vazias(self):
+        return range(5 - self.avaliacao)
 
     
 class Cliente(models.Model):
