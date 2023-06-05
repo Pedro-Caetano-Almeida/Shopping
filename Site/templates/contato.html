@@ -1,15 +1,32 @@
 {% extends 'base.html' %}
-
-{% block Titulo %}Contatos{% endblock Titulo %}
-
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block Titulo %}
+Contato
+{% endblock Titulo %}
 {% block Conteudo %}
-        <!-- Header-->
-        <header class="bg-light py-1">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-dark">
-                    <h1 class="display-4 fw-bolder">Contatos</h1>
-                </div>
+<header class="bg-light py-1">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-dark">
+            <h1 class="display-4 fw-bolder">Contato</h1>
+        </div>
+    </div>
+</header>
+<section class="py-5">
+    <div class="container">
+        {% if mensagem %}
+        <div class="alert alert-success" role="alert">
+            {{mensagem}}
+          </div>
+        {% endif%}
+        <form action="{% url 'contato' %}" method="POST">
+            {% comment %} a tag csrf a seguir gera uma chave que garante que o destino receba os dados originais {% endcomment %}
+            {% csrf_token %} 
+            <div class="col-md-6 offset-md-3">
+            {{ form_contato|crispy }}
             </div>
-        </header>
-
+            <input class="btn btn-primary btn-lg" type="submit" value="Enviar">
+        </form>        
+    </div>
+</section>
 {% endblock Conteudo %}
