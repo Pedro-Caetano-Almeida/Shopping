@@ -53,15 +53,14 @@ def contatos(request):
         mensagem = request.POST['mensagem']
         remetente = request.POST['email']
         destinatario = ['profronicosta@gmail.com']
-        corpo = f"Nome: {nome} \nTelefone: {telefone}  \nMensagem: {mensagem}"
+        corpo = f"Nome: {nome} \nE=mail: {remetente} \nTelefone: {telefone}  \nMensagem: {mensagem}"
     
         try:
             send_mail(assunto, corpo, remetente, destinatario )
-            retorno = 'E-mail enviado com sucesso!'
+            mensagem = 'E-mail enviado com sucesso!'
         except:
-            retorno = 'Erro ao enviar e-mail!'
-    else:
-        formulario = ContatoForm()
+            mensagem = 'Erro ao enviar e-mail!'
+    formulario = ContatoForm()
 
     context = {
         'form_contato' : formulario,
