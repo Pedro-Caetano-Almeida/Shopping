@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,8 +26,9 @@ SECRET_KEY = 'django-insecure-ryb_@%vtv79z41f@fra3$bxkmz7l82p=8n4lqg$!ej2pkow)y-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', '127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS  = ['https://web-production-b4dc.up.railway.app']
 
 # Application definition
 
@@ -79,13 +81,13 @@ WSGI_APPLICATION = 'Shopping.wsgi.application'
 
 DATABASES = {
      'default': {
-         'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'shopping',
-         'USER': 'root',
-         'PASSWORD': '',
-         'HOST': 'localhost',
-         'PORT': '3306'
-     }
+          'ENGINE': 'django.db.backends.mysql',
+          'NAME': 'railway', #'shopping',
+          'USER': 'root', #'root'
+          'PASSWORD': 'iN7KJPt5tuZfOZ7vKLkB', #'',
+          'HOST': 'containers-us-west-118.railway.app', #'localhost',
+          'PORT': '5748', #'3306'
+      }
  }
 
 
@@ -124,6 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')	# static files do admin
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ] # static files do site
+
 #aqui é para funcionar o upload de imagens
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
